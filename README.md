@@ -16,7 +16,7 @@ O sistema busca explorar boas práticas de programação e modelagem de software
 
 ## 👥 Equipe  
 - Paulo César Ferreira de Assis - **Mareaturbo2**  
-- Robson Sando Andrade Cunha Filho - **Robson3699**  
+- Robson Sando Andrade Cunha Filho - **DarkArtsBM**  
 - Matheus Rangel Kirzner - **mattkirzner**  
 - Luiz Henrique da Silva Neves - **Luiz380**  
 - Juliana Marçal Bezerra Jardim - **juliana-m-b-jardim**  
