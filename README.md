@@ -1,16 +1,23 @@
-# 🚀 Projeto POO  
+# 🏦 JRB - Jalinrabei Bank  
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)  
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow?style=for-the-badge)  
 
 ## 📌 Descrição  
-Este projeto foi desenvolvido na disciplina de **Programação Orientada a Objetos (POO)** com o objetivo de aplicar conceitos fundamentais de **orientação a objetos** em Java, como:  
+O **JRB - Jalinrabei Bank** é um sistema de simulação bancária desenvolvido na disciplina de **Programação Orientada a Objetos (POO)**.  
+O objetivo do projeto é aplicar conceitos fundamentais de orientação a objetos em Java, como:  
 - Abstração  
 - Encapsulamento  
 - Herança  
 - Polimorfismo  
 
-O sistema busca explorar boas práticas de programação e modelagem de software.  
+O sistema permite simular operações bancárias, como:  
+- 📋 Criação e gerenciamento de contas  
+- 💰 Depósitos e saques  
+- 🔄 Transferências entre contas  
+- 📊 Consulta de saldo  
+
+Tudo isso com foco em boas práticas de programação e modelagem de software.  
 
 ---
 
@@ -21,6 +28,7 @@ O sistema busca explorar boas práticas de programação e modelagem de software
 - Luiz Henrique da Silva Neves - **Luiz380**  
 - Juliana Marçal Bezerra Jardim - **juliana-m-b-jardim**  
 - Matheus José Cardoso Luna - **matheusluna12**  
+- Rafael Farias Santana - **rafaelFarias7**  
 
 ---
 
@@ -48,4 +56,4 @@ cd Projeto-poo
 javac src/*.java
 
 # Executar o programa principal
-java src/NomeDaClassePrincipal
+java src/JRBMain
