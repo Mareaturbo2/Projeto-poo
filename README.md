@@ -47,7 +47,7 @@ Tudo isso com foco em boas práticas de programação e modelagem de software.
 ### Passos  
 ```bash
 # Clonar o repositório
-git clone https://github.com/SEU-USUARIO/Projeto-poo.git
+git clone https://github.com/Mareaturbo2/Projeto-poo
 
 # Entrar na pasta do projeto
 cd Projeto-poo
