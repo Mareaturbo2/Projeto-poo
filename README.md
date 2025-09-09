@@ -59,9 +59,10 @@ javac src/*.java
 java src/JRBMain
 ```
 
-## 📌 Trello
 
-Acompanhe o progresso do projeto no Trello: [Quadro do Projeto](https://trello.com/b/mt2Z0dtN/jrb-projeto-poo)
+## 📌 Trello
+[![Trello](https://img.shields.io/badge/Trello-Quadro%20do%20Projeto-0052CC?style=for-the-badge&logo=trello&logoColor=white)](https://trello.com/b/mt2Z0dtN/jrb-projeto-poo)
+
 
 ## 🎨 Protótipo de Lo-Fi
 [![Protótipo no Figma](https://img.shields.io/badge/Figma-Protótipo%20Lo--Fi-blue?style=for-the-badge&logo=figma)](https://www.figma.com/design/uqrwYchPt0zOBuOFScELYx?node-id=0-1)
