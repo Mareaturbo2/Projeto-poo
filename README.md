@@ -26,7 +26,7 @@ Tudo isso com foco em boas práticas de programação e modelagem de software.
 - Robson Sando Andrade Cunha Filho - **DarkArtsBM**  
 - Matheus Rangel Kirzner - **mattkirzner**  
 - Luiz Henrique da Silva Neves - **Luiz380**  
-- Juliana Marçal Bezerra Jardim - **juliana-m-b-jardim**  
+- Julio Bezerra Coelho - **Juliobzr**  
 - Matheus José Cardoso Luna - **matheusluna12**  
 - Rafael Farias Santana - **rafaelFarias7**  
 
