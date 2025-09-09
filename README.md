@@ -57,6 +57,7 @@ javac src/*.java
 
 # Executar o programa principal
 java src/JRBMain
+```
 
 ## 📌 Trello
 
