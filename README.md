@@ -1,10 +1,10 @@
-# 🏦 JRB - Jalinrabei Bank  
+# 🏦 JRB - Jalinroubei Bank  
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)  
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow?style=for-the-badge)  
 
 ## 📌 Descrição  
-O **JRB - Jalinrabei Bank** é um sistema de simulação bancária desenvolvido na disciplina de **Programação Orientada a Objetos (POO)**.  
+O **JRB - Jalinroubei Bank** é um sistema de simulação bancária desenvolvido na disciplina de **Programação Orientada a Objetos (POO)**.  
 O objetivo do projeto é aplicar conceitos fundamentais de orientação a objetos em Java, como:  
 - Abstração  
 - Encapsulamento  
@@ -57,3 +57,15 @@ javac src/*.java
 
 # Executar o programa principal
 java src/JRBMain
+
+## 📌 Trello
+
+Acompanhe o progresso do projeto no Trello: [Quadro do Projeto](https://trello.com/b/mt2Z0dtN/jrb-projeto-poo)
+
+## 🎨 Protótipo de Lo-Fi
+[![Protótipo no Figma](https://img.shields.io/badge/Figma-Protótipo%20Lo--Fi-blue?style=for-the-badge&logo=figma)](https://www.figma.com/design/uqrwYchPt0zOBuOFScELYx?node-id=0-1)
+
+---
+
+## 🎥 Screencast
+[![Screencast no YouTube](https://img.shields.io/badge/YouTube-Screencast-red?style=for-the-badge&logo=youtube)](https://youtu.be/jlmBgCxwt4k)
