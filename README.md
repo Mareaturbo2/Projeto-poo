@@ -70,4 +70,5 @@ java src/JRBMain
 ---
 
 ## 🎥 Screencast
-[![Screencast no YouTube](https://img.shields.io/badge/YouTube-Screencast-red?style=for-the-badge&logo=youtube)](https://youtu.be/jlmBgCxwt4k)
+[![Screencast no YouTube Entrega 1](https://img.shields.io/badge/YouTube-Screencast-red?style=for-the-badge&logo=youtube)](https://youtu.be/jlmBgCxwt4k)
+[![Screencast no YouTube:Entrega 2](https://img.shields.io/badge/YouTube-Screencast-red?style=for-the-badge&logo=youtube)](https://youtu.be/koP8LIMcJ9o)
