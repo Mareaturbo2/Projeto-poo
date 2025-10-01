@@ -7,12 +7,15 @@ public class Account {
     private String holder;
     private Double balance;
     private Double withdrawLimit;
+    private Integer age;
 
-    public Account(String number, String holder, Double balance, Double withdrawLimit) {
+    public Account(String number, String holder,Integer age, Double balance, Double withdrawLimit) {
         this.numberAccount = number;
         this.holder = holder;
         this.balance = balance;
         this.withdrawLimit = withdrawLimit;
+        this.age = age;
+
     }
 
     public String getNumberAccount() {
@@ -35,6 +38,13 @@ public class Account {
         return balance;
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
 
     public Double getWithdrawLimit() {
         return withdrawLimit;
