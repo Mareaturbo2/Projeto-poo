@@ -39,7 +39,7 @@ public class Account {
     }
 
     public void depositar(Double quantia) {
-        if (quantia <= 0.0) {
+        if (quantia <= 0.0 ) {
             throw new DomainException("Valor inválido para depósito");
         }
         saldo += quantia;

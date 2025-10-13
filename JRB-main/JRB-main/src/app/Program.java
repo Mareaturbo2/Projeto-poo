@@ -130,24 +130,34 @@ public class Program {
                         break;
 
                     case 2:
+                        
                         System.out.print("Valor do depósito: ");
-                        double dep = sc.nextDouble();
-                        conta.depositar(dep);
-                        bank.atualizarContas(); 
-                        System.out.printf("Depósito realizado! Saldo atual: R$ %.2f%n", conta.getSaldo());
-                        break;
-
+                            try {
+                                double dep = sc.nextDouble();
+                                conta.depositar(dep);
+                                bank.atualizarContas();
+                                System.out.printf("Depósito realizado! Saldo atual: R$ %.2f%n", conta.getSaldo());
+                            } catch (java.util.InputMismatchException e) {
+                                System.out.println("Formato inválido de valor.");
+                                sc.nextLine(); 
+                            }
+                            break;
                     case 3:
-                        System.out.print("Valor do saque: ");
-                        double saque = sc.nextDouble();
-                        conta.sacar(saque);     
-                        bank.atualizarContas(); 
-                        if (conta.getSaldo() == 0.0) {
-                            System.out.println("Saque realizado! O saldo foi zerado.");
-                        } else {
-                            System.out.printf("Saque realizado! Saldo atual: R$ %.2f%n", conta.getSaldo());
-                        }
-                        break;
+                            System.out.print("Valor do saque: ");
+                                try {
+                                    double saque = sc.nextDouble();
+                                    conta.sacar(saque);
+                                    bank.atualizarContas();
+                                    if (conta.getSaldo() == 0.0) {
+                                        System.out.println("Saque realizado! O saldo foi zerado.");
+                                    } else {
+                                        System.out.printf("Saque realizado! Saldo atual: R$ %.2f%n", conta.getSaldo());
+                                    }
+                                } catch (java.util.InputMismatchException e) {
+                                    System.out.println("Formato inválido de valor.");
+                                    sc.nextLine();
+                                }
+                                break;
 
                     case 0:
                         System.out.println("Saindo da conta...");
