@@ -3,67 +3,60 @@ package model.entt;
 import model.excp.DomainException;
 
 public class Account {
-    private String numberAccount;
-    private String holder;
-    private Double balance;
-    private Double withdrawLimit;
-    private Integer age;
 
-    public Account(String number, String holder,Integer age, Double balance, Double withdrawLimit) {
-        this.numberAccount = number;
-        this.holder = holder;
-        this.balance = balance;
-        this.withdrawLimit = withdrawLimit;
-        this.age = age;
+    private Integer numero;
+    private String titular;
+    private String senha;     
+    private Double saldo;
+    private Double limiteDeSaque;
 
+    public Account(Integer numero, String titular, String senha, Double saldo, Double limiteDeSaque) {
+        this.numero = numero;
+        this.titular = titular;
+        this.senha = senha;
+        this.saldo = saldo;
+        this.limiteDeSaque = limiteDeSaque;
     }
 
-    public String getNumberAccount() {
-        return numberAccount;
+    public Integer getNumero() {
+        return numero;
     }
 
-    public void setNumberAccount(String numberAccount) {
-        this.numberAccount = numberAccount;
+    public String getTitular() {
+        return titular;
     }
 
-    public String getHolder() {
-        return holder;
+    public Double getSaldo() {
+        return saldo;
     }
 
-    public void setHolder(String holder) {
-        this.holder = holder;
+    public Double getLimiteDeSaque() {
+        return limiteDeSaque;
     }
 
-    public Double getBalance() {
-        return balance;
+    public boolean validarSenha(String senhaDigitada) {
+        return senha.equals(senhaDigitada);
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Double getWithdrawLimit() {
-        return withdrawLimit;
-    }
-
-    public void withdraw(Double withdraw){
-        if(withdraw>withdrawLimit){
-            throw new DomainException("The amount exceeds withdraw limit . ");
-        }else if(withdraw>balance){
-            throw new DomainException("not enough balance. ");
-
-        }else{
-            balance -= withdraw;
+    public void depositar(Double quantia) {
+        if (quantia <= 0.0) {
+            throw new DomainException("Valor inválido para depósito");
         }
-    }
-    public void deposit(Double deposit){
-        balance += deposit;
+        saldo += quantia;
     }
 
+    public void sacar(Double quantia) {
+        if (quantia == null || quantia <= 0.0) {
+            throw new DomainException("Valor inválido para saque");
+        }
 
+        if (quantia > saldo) {
+            throw new DomainException("Saldo insuficiente");
+        }
 
+        saldo -= quantia;
+
+        System.out.printf("Saque de R$ %.2f realizado com sucesso.%n", quantia);
+        System.out.printf("Saldo atual: R$ %.2f%n", saldo);
+    }
 }

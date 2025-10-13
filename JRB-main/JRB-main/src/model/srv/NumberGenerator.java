@@ -4,13 +4,8 @@ import java.util.Random;
 
 public class NumberGenerator {
 
-    public static String numberAccount(){
-        Random rand = new Random();
-        StringBuilder sb = new StringBuilder(6);
-        for (int i = 0; i < 6; i++) {
-            sb.append(rand.nextInt(10));
-        }
-        return sb.toString();
+    public static int gerarNumeroConta() {
+        Random random = new Random();
+        return 1000 + random.nextInt(9000); // gera número entre 1000 e 9999
     }
 }
-

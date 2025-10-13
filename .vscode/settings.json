@@ -1,0 +1,8 @@
+{
+    "java.project.sourcePaths": [
+        "JRB-main\\JRB-main\\src"
+    ],
+    "java.project.referencedLibraries": [
+        "JRB-main\\JRB-main\\lib\\gson-2.10.1.jar"
+    ]
+}
