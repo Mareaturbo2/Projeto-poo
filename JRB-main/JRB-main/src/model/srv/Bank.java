@@ -30,6 +30,7 @@ public class Bank {
         if (cpf == null || cpf.trim().isEmpty()) {
             throw new DomainException("CPF inválido");
         }
+
         if (contas.containsKey(cpf)) {
             throw new DomainException("CPF já vinculado a uma conta");
         }
@@ -55,11 +56,7 @@ public class Bank {
     }
 
     public void atualizarContas() {
-        try (FileWriter writer = new FileWriter(FILE_PATH)) {
-            gson.toJson(contas, writer);
-        } catch (IOException e) {
-            System.out.println("Erro ao atualizar contas: " + e.getMessage());
-        }
+        salvarContas(); 
     }
 
     private void salvarContas() {

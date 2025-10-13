@@ -2,6 +2,8 @@ package app;
 
 import java.util.Locale;
 import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 
 import model.entt.Account;
 import model.excp.DomainException;
@@ -23,7 +25,7 @@ public class Program {
                 System.out.println("0 - Sair");
                 System.out.print("Escolha uma opção: ");
                 opcao = sc.nextInt();
-                sc.nextLine(); 
+                sc.nextLine();
 
                 switch (opcao) {
                     case 1:
@@ -43,13 +45,12 @@ public class Program {
                 System.out.println("Erro: " + e.getMessage());
             } catch (Exception e) {
                 System.out.println("Erro inesperado: " + e.getMessage());
-                sc.nextLine(); 
+                sc.nextLine();
             }
         }
 
         sc.close();
     }
-
     private static void criarConta(Scanner sc, Bank bank) {
         System.out.println("\n=== CRIAÇÃO DE CONTA ===");
         System.out.print("Nome: ");
@@ -95,21 +96,15 @@ public class Program {
         System.out.print("Senha: ");
         String senha = sc.nextLine();
 
-        try {
-            
-            if (!conta.validarSenha(senha)) {
-                System.out.println("Senha incorreta.");
-                return;
-            }
-        } catch (DomainException e) {
-            
-            System.out.println("Erro: " + e.getMessage());
+        if (!conta.validarSenha(senha)) {
+            System.out.println("Senha incorreta.");
             return;
         }
 
         System.out.println("\nLogin realizado com sucesso!");
         menuDaConta(sc, conta, bank);
     }
+
     private static void menuDaConta(Scanner sc, Account conta, Bank bank) {
         int opcao = -1;
         while (opcao != 0) {
@@ -117,6 +112,7 @@ public class Program {
             System.out.println("1 - Consultar saldo");
             System.out.println("2 - Depositar");
             System.out.println("3 - Sacar");
+            System.out.println("4 - Extrato");
             System.out.println("0 - Sair da conta");
             System.out.print("Escolha uma opção: ");
             opcao = sc.nextInt();
@@ -130,34 +126,38 @@ public class Program {
                         break;
 
                     case 2:
-                        
                         System.out.print("Valor do depósito: ");
-                            try {
-                                double dep = sc.nextDouble();
-                                conta.depositar(dep);
-                                bank.atualizarContas();
-                                System.out.printf("Depósito realizado! Saldo atual: R$ %.2f%n", conta.getSaldo());
-                            } catch (java.util.InputMismatchException e) {
-                                System.out.println("Formato inválido de valor.");
-                                sc.nextLine(); 
-                            }
-                            break;
+                        try {
+                            double dep = sc.nextDouble();
+                            conta.depositar(dep);
+                            bank.atualizarContas();
+                            System.out.printf("Depósito realizado! Saldo atual: R$ %.2f%n", conta.getSaldo());
+                        } catch (java.util.InputMismatchException e) {
+                            System.out.println("Formato inválido de valor.");
+                            sc.nextLine();
+                        }
+                        break;
+
                     case 3:
-                            System.out.print("Valor do saque: ");
-                                try {
-                                    double saque = sc.nextDouble();
-                                    conta.sacar(saque);
-                                    bank.atualizarContas();
-                                    if (conta.getSaldo() == 0.0) {
-                                        System.out.println("Saque realizado! O saldo foi zerado.");
-                                    } else {
-                                        System.out.printf("Saque realizado! Saldo atual: R$ %.2f%n", conta.getSaldo());
-                                    }
-                                } catch (java.util.InputMismatchException e) {
-                                    System.out.println("Formato inválido de valor.");
-                                    sc.nextLine();
-                                }
-                                break;
+                        System.out.print("Valor do saque: ");
+                        try {
+                            double saque = sc.nextDouble();
+                            conta.sacar(saque);
+                            bank.atualizarContas();
+                            if (conta.getSaldo() == 0.0) {
+                                System.out.println("Saque realizado! O saldo foi zerado.");
+                            } else {
+                                System.out.printf("Saque realizado! Saldo atual: R$ %.2f%n", conta.getSaldo());
+                            }
+                        } catch (java.util.InputMismatchException e) {
+                            System.out.println("Formato inválido de valor.");
+                            sc.nextLine();
+                        }
+                        break;
+
+                    case 4:
+                        mostrarExtrato(sc, conta);
+                        break;
 
                     case 0:
                         System.out.println("Saindo da conta...");
@@ -171,6 +171,59 @@ public class Program {
             } catch (Exception e) {
                 System.out.println("Erro inesperado: " + e.getMessage());
                 sc.nextLine();
+            }
+        }
+    }
+    private static void mostrarExtrato(Scanner sc, Account conta) {
+        System.out.println("\n=== EXTRATO BANCÁRIO ===");
+
+        if (conta.getMovimentacoes().isEmpty()) {
+            System.out.println("Nenhuma movimentação encontrada.");
+            return;
+        }
+
+        System.out.print("Deseja filtrar por período? (s/n): ");
+        char opcao = sc.next().charAt(0);
+        sc.nextLine();
+
+        if (opcao == 's' || opcao == 'S') {
+            try {
+                System.out.print("Data inicial (dd/MM/yyyy): ");
+                String dataInicioStr = sc.nextLine();
+                System.out.print("Data final (dd/MM/yyyy): ");
+                String dataFimStr = sc.nextLine();
+
+                DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate dataInicio = LocalDate.parse(dataInicioStr, fmt);
+                LocalDate dataFim = LocalDate.parse(dataFimStr, fmt);
+
+                if (dataInicio.isAfter(dataFim)) {
+                    System.out.println("Intervalo de datas inválido.");
+                    return;
+                }
+
+                boolean encontrou = false;
+                System.out.println("\n=== EXTRATO FILTRADO ===");
+                for (Account.Movimentacao mov : conta.getMovimentacoes()) {
+                    LocalDate dataMov = LocalDate.parse(mov.getDataHora().substring(0, 10),
+                            DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    if (!dataMov.isBefore(dataInicio) && !dataMov.isAfter(dataFim)) {
+                        System.out.println(mov);
+                        encontrou = true;
+                    }
+                }
+
+                if (!encontrou) {
+                    System.out.println("Nenhuma movimentação encontrada no período.");
+                }
+
+            } catch (java.time.format.DateTimeParseException e) {
+                System.out.println("Formato de data inválido.");
+            }
+        } else {
+            System.out.println("\n=== EXTRATO COMPLETO ===");
+            for (Account.Movimentacao mov : conta.getMovimentacoes()) {
+                System.out.println(mov);
             }
         }
     }
