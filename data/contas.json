@@ -1,146 +1,43 @@
 {
-  "123": {
+  "111": {
+    "cpf": "111",
     "tipo": "corrente",
-    "numero": 8901,
-    "titular": "luiz",
-    "senha": "1111",
-    "saldo": 50.0,
-    "encerrada": false,
-    "movimentacoes": []
-  },
-  "998": {
-    "tipo": "poupanca",
-    "numero": 96261,
-    "titular": "paulo",
-    "senha": "0000",
-    "saldo": 0.0,
-    "encerrada": true,
-    "movimentacoes": [
-      {
-        "tipo": "Depósito",
-        "valor": 10.0,
-        "dataHora": "14/10/2025 11:20"
-      },
-      {
-        "tipo": "Saque",
-        "valor": -1010.0,
-        "dataHora": "14/10/2025 11:32"
-      },
-      {
-        "tipo": "Depósito",
-        "valor": 10.0,
-        "dataHora": "14/10/2025 11:32"
-      },
-      {
-        "tipo": "Saque",
-        "valor": -10.0,
-        "dataHora": "14/10/2025 11:47"
-      },
-      {
-        "tipo": "Encerramento de conta",
-        "valor": 0.0,
-        "dataHora": "14/10/2025 11:47"
-      }
-    ]
-  },
-  "999": {
-    "tipo": "corrente",
-    "numero": 6419,
-    "titular": "matheus",
-    "senha": "0000",
-    "saldo": 274.431,
+    "conta": 69125,
+    "titular": "teste",
+    "senha": "0001",
+    "saldo": 933.0,
     "encerrada": false,
     "movimentacoes": [
       {
-        "tipo": "Saque",
-        "valor": -50.0,
-        "dataHora": "13/10/2025 19:29"
-      },
-      {
-        "tipo": "Depósito",
-        "valor": 300.0,
-        "dataHora": "13/10/2025 19:29"
-      },
-      {
-        "tipo": "Depósito",
-        "valor": 100.0,
-        "dataHora": "13/10/2025 19:33"
-      },
-      {
-        "tipo": "Depósito",
-        "valor": 200.0,
-        "dataHora": "13/10/2025 19:33"
-      },
-      {
-        "tipo": "Depósito",
-        "valor": 100.0,
-        "dataHora": "13/10/2025 19:33"
-      },
-      {
         "tipo": "Depósito",
         "valor": 50.0,
-        "dataHora": "13/10/2025 19:33"
-      },
-      {
-        "tipo": "Depósito",
-        "valor": 50.0,
-        "dataHora": "13/10/2025 19:33"
-      },
-      {
-        "tipo": "Depósito",
-        "valor": 150.0,
-        "dataHora": "13/10/2025 19:34"
-      },
-      {
-        "tipo": "Depósito",
-        "valor": 50.0,
-        "dataHora": "13/10/2025 19:34"
+        "dataHora": "14/10/2025 14:43"
       },
       {
         "tipo": "Saque",
-        "valor": -999.999,
-        "dataHora": "13/10/2025 19:35"
+        "valor": -40.0,
+        "dataHora": "14/10/2025 14:44"
       },
       {
         "tipo": "Depósito",
         "valor": 1000.0,
-        "dataHora": "13/10/2025 19:38"
+        "dataHora": "14/10/2025 15:01"
       },
       {
         "tipo": "Saque",
-        "valor": -999.0,
-        "dataHora": "13/10/2025 19:38"
-      },
-      {
-        "tipo": "Saque",
-        "valor": -0.57,
-        "dataHora": "13/10/2025 19:38"
-      },
-      {
-        "tipo": "Depósito",
-        "valor": 254.0,
-        "dataHora": "13/10/2025 23:14"
-      },
-      {
-        "tipo": "Depósito",
-        "valor": 100.0,
-        "dataHora": "13/10/2025 23:14"
-      },
-      {
-        "tipo": "Saque",
-        "valor": -150.0,
-        "dataHora": "13/10/2025 23:14"
-      },
-      {
-        "tipo": "Depósito",
-        "valor": 10.0,
-        "dataHora": "13/10/2025 23:19"
-      },
-      {
-        "tipo": "Depósito",
-        "valor": 60.0,
-        "dataHora": "13/10/2025 23:19"
+        "valor": -77.0,
+        "dataHora": "14/10/2025 15:01"
       }
     ]
+  },
+  "223": {
+    "cpf": "223",
+    "tipo": "corrente",
+    "conta": 14507,
+    "titular": "paulo",
+    "senha": "0001",
+    "saldo": 0.0,
+    "encerrada": false,
+    "movimentacoes": []
   }
 }

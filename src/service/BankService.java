@@ -77,8 +77,9 @@ public class BankService {
                 String cpf = e.getKey();
                 Account c = e.getValue();
                 JsonObject obj = new JsonObject();
+                obj.addProperty("cpf", cpf);
                 obj.addProperty("tipo", c.getTipoConta().equals("Conta Corrente") ? "corrente" : "poupanca");
-                obj.addProperty("numero", c.getNumero());
+                obj.addProperty("conta", c.getNumero());
                 obj.addProperty("titular", c.getTitular());
                 obj.addProperty("senha", c.getSenhaMaskless());
                 obj.addProperty("saldo", c.getSaldo());
@@ -114,7 +115,8 @@ public class BankService {
                 JsonObject obj = entry.getValue().getAsJsonObject();
 
                 String tipo = obj.get("tipo").getAsString();
-                int numero = obj.get("numero").getAsInt();
+                int numero = obj.has("conta") ? obj.get("conta").getAsInt() : obj.get("numero").getAsInt();
+
                 String titular = obj.get("titular").getAsString();
                 String senha = obj.get("senha").getAsString();
                 double saldo = obj.get("saldo").getAsDouble();

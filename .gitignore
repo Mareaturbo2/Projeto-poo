@@ -1,30 +1,83 @@
-### IntelliJ IDEA ###
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-.kotlin
+# ===========================================
+# FRONTEND (React + Vite)
+# ===========================================
 
-### Eclipse ###
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+dist/
+dist-ssr/
+*.local
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
+
+# ===========================================
+# BACKEND (Java + Spark)
+# ===========================================
+
+# Compiled class files
+*.class
+
+# Build directories
+out/
+target/
+bin/
+lib/
+
+# IDE configurations
+.idea/
+.vscode/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ===========================================
+# Sistema operacional
+# ===========================================
+
+.DS_Store
+Thumbs.db
+
+# ===========================================
+# Logs e caches
+# ===========================================
+
+logs/
+*.log
+hs_err_pid*
+replay_pid*
+
+
+
+# ===========================================
+# NetBeans / Eclipse / IntelliJ específicos
+# ===========================================
+
+.nb-gradle/
+nbbuild/
+dist/
+nbdist/
 .apt_generated
 .classpath
-.factorypath
 .project
 .settings
 .springBeans
 .sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# ===========================================
+# VS Code
+# ===========================================
 
-### VS Code ###
 .vscode/
-
-### Mac OS ###
-.DS_Store
