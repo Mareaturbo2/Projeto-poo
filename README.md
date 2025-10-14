@@ -66,8 +66,8 @@ Certifique-se de ter instalados:
 ### 📂 **2. Clonar o projeto**
 
 ```bash
-git clone https://github.com/Mareaturbo2/Projeto-poo
-cd Projeto-poo
+git clone https://github.com/Mareaturbo2/JRB
+cd JRB
 ```
 
 ---
