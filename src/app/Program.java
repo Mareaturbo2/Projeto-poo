@@ -240,7 +240,7 @@ public class Program {
 
     private static void exportarExtratoPDF(Account conta) {
         try {
-            String nomeArquivo = "extrato_" + conta.getNumero() + ".pdf";
+            String nomeArquivo = "data/extrato_" + conta.getNumero() + ".pdf";
             Document documento = new Document();
             PdfWriter.getInstance(documento, new FileOutputStream(nomeArquivo));
             documento.open();

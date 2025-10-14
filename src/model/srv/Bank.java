@@ -14,7 +14,7 @@ import model.excp.DomainException;
 
 public class Bank {
 
-    private static final String FILE_PATH = "contas.json";
+    private static final String FILE_PATH = "data/contas.json";
     private Map<String, Account> contas = new HashMap<>();
     private Gson gson = new Gson();
 
