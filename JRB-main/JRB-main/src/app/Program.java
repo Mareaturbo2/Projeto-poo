@@ -9,6 +9,14 @@ import model.entt.Account;
 import model.excp.DomainException;
 import model.srv.Bank;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.io.FileOutputStream;
+
 public class Program {
 
     public static void main(String[] args) {
@@ -51,11 +59,11 @@ public class Program {
 
         sc.close();
     }
+
     private static void criarConta(Scanner sc, Bank bank) {
         System.out.println("\n=== CRIAÇÃO DE CONTA ===");
         System.out.print("Nome: ");
         String nome = sc.nextLine();
-
         System.out.print("CPF: ");
         String cpf = sc.nextLine();
 
@@ -65,7 +73,6 @@ public class Program {
 
         System.out.print("Crie uma senha de acesso: ");
         String senha = sc.nextLine();
-
         System.out.print("Deseja informar saldo inicial? (s/n): ");
         char opc = sc.next().charAt(0);
 
@@ -76,7 +83,6 @@ public class Program {
         }
 
         Account novaConta = bank.criarConta(nome, cpf, senha, saldoInicial);
-
         System.out.println("\nConta criada com sucesso!");
         System.out.println("Número da conta: " + novaConta.getNumero());
         System.out.printf("Saldo inicial: R$ %.2f%n", novaConta.getSaldo());
@@ -112,7 +118,7 @@ public class Program {
             System.out.println("1 - Consultar saldo");
             System.out.println("2 - Depositar");
             System.out.println("3 - Sacar");
-            System.out.println("4 - Extrato");
+            System.out.println("4 - Extrato (visualizar/exportar PDF)");
             System.out.println("0 - Sair da conta");
             System.out.print("Escolha uma opção: ");
             opcao = sc.nextInt();
@@ -124,7 +130,6 @@ public class Program {
                         System.out.println("Titular: " + conta.getTitular());
                         System.out.printf("Saldo atual: R$ %.2f%n", conta.getSaldo());
                         break;
-
                     case 2:
                         System.out.print("Valor do depósito: ");
                         try {
@@ -137,7 +142,6 @@ public class Program {
                             sc.nextLine();
                         }
                         break;
-
                     case 3:
                         System.out.print("Valor do saque: ");
                         try {
@@ -154,15 +158,12 @@ public class Program {
                             sc.nextLine();
                         }
                         break;
-
                     case 4:
                         mostrarExtrato(sc, conta);
                         break;
-
                     case 0:
                         System.out.println("Saindo da conta...");
                         break;
-
                     default:
                         System.out.println("Opção inválida.");
                 }
@@ -174,6 +175,7 @@ public class Program {
             }
         }
     }
+
     private static void mostrarExtrato(Scanner sc, Account conta) {
         System.out.println("\n=== EXTRATO BANCÁRIO ===");
 
@@ -225,6 +227,53 @@ public class Program {
             for (Account.Movimentacao mov : conta.getMovimentacoes()) {
                 System.out.println(mov);
             }
+        }
+
+        System.out.print("\nDeseja exportar o extrato em PDF? (s/n): ");
+        char exportar = sc.next().charAt(0);
+        sc.nextLine();
+
+        if (exportar == 's' || exportar == 'S') {
+            exportarExtratoPDF(conta);
+        }
+    }
+
+    private static void exportarExtratoPDF(Account conta) {
+        try {
+            String nomeArquivo = "extrato_" + conta.getNumero() + ".pdf";
+            Document documento = new Document();
+            PdfWriter.getInstance(documento, new FileOutputStream(nomeArquivo));
+            documento.open();
+
+            documento.add(new Paragraph("Extrato Bancário"));
+            documento.add(new Paragraph("Titular: " + conta.getTitular()));
+            documento.add(new Paragraph("Número da Conta: " + conta.getNumero()));
+            documento.add(new Paragraph("Saldo Atual: R$ " + String.format("%.2f", conta.getSaldo())));
+            documento.add(new Paragraph(" "));
+            documento.add(new Paragraph("Movimentações:"));
+            documento.add(new Paragraph(" "));
+
+            if (conta.getMovimentacoes().isEmpty()) {
+                documento.add(new Paragraph("Nenhuma movimentação encontrada."));
+            } else {
+                PdfPTable tabela = new PdfPTable(3);
+                tabela.addCell("Data");
+                tabela.addCell("Tipo");
+                tabela.addCell("Valor");
+
+                for (Account.Movimentacao mov : conta.getMovimentacoes()) {
+                    tabela.addCell(mov.getDataHora());
+                    tabela.addCell(mov.getTipo());
+                    tabela.addCell(String.format("R$ %.2f", mov.getValor()));
+                }
+                documento.add(tabela);
+            }
+
+            documento.close();
+            System.out.println("Extrato exportado com sucesso: " + nomeArquivo);
+
+        } catch (DocumentException | java.io.IOException e) {
+            System.out.println("Erro ao gerar PDF: " + e.getMessage());
         }
     }
 }

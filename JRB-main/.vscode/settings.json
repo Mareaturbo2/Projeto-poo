@@ -3,6 +3,7 @@
         "JRB-main/src"
     ],
     "java.project.referencedLibraries": [
-        "JRB-main/lib/gson-2.10.1.jar"
+        "JRB-main/lib/itextpdf-5.5.13.3.jar",
+        "/home/paulo/JRB/JRB-main/JRB-main/lib/gson-2.10.1.jar"
     ]
 }
