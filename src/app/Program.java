@@ -21,6 +21,9 @@ public class Program {
 
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
+        System.setProperty("file.encoding", "UTF-8");
+
+
         Scanner sc = new Scanner(System.in);
         Bank bank = new Bank();
 
