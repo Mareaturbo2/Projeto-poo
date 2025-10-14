@@ -1,23 +1,22 @@
 # 🏦 JRB - Jalinroubei Bank  
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)  
+![React](https://img.shields.io/badge/React-61DBFB?style=for-the-badge&logo=react&logoColor=black)  
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow?style=for-the-badge)  
+
+---
 
 ## 📌 Descrição  
 O **JRB - Jalinroubei Bank** é um sistema de simulação bancária desenvolvido na disciplina de **Programação Orientada a Objetos (POO)**.  
-O objetivo do projeto é aplicar conceitos fundamentais de orientação a objetos em Java, como:  
-- Abstração  
-- Encapsulamento  
-- Herança  
-- Polimorfismo  
+O projeto foi evoluído para incluir uma **API REST em Java (Spark Framework)** e uma **interface moderna em React (Vite)**.  
 
-O sistema permite simular operações bancárias, como:  
+O sistema permite:
 - 📋 Criação e gerenciamento de contas  
 - 💰 Depósitos e saques  
-- 🔄 Transferências entre contas  
 - 📊 Consulta de saldo  
+- 🧾 Visualização e exportação de extratos em PDF  
 
-Tudo isso com foco em boas práticas de programação e modelagem de software.  
+Tudo com persistência local em JSON e geração automática de relatórios PDF no backend.
 
 ---
 
@@ -28,47 +27,193 @@ Tudo isso com foco em boas práticas de programação e modelagem de software.
 - Luiz Henrique da Silva Neves - **Luiz380**  
 - Julio Bezerra Coelho - **Juliobzr**  
 - Matheus José Cardoso Luna - **matheusluna12**  
-- Rafael Farias Santana - **rafaelFarias7**  
+- Rafael Farias Santana - **rafaelFarias7**
 
 ---
 
 ## 🛠 Tecnologias Utilizadas  
-- [Java](https://www.oracle.com/java/) ☕  
-- Git & GitHub para versionamento 🔧  
+### 🔹 Backend  
+- Java 17  
+- Spark Framework  
+- Gson (JSON Parser)  
+- iTextPDF (geração de relatórios em PDF)
+
+### 🔹 Frontend  
+- React + Vite  
+- JavaScript / JSX / CSS  
 
 ---
 
-## 🚀 Como Executar  
+## 🚀 **Como Executar o Projeto JRB**
 
-### Pré-requisitos  
-- [JDK 17+](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html) instalado  
-- Git instalado  
+O projeto JRB é dividido em **duas partes**:
+1. 🧠 **Backend** — Java + Spark Framework  
+2. 💻 **Frontend** — React + Vite  
 
-### Passos  
+A seguir estão os passos para configurar e executar corretamente em qualquer máquina.
+
+---
+
+### ⚙️ **1. Pré-requisitos**
+
+Certifique-se de ter instalados:
+- **JDK 17+** → [Baixar](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html)
+- **Node.js 18+** → [Baixar](https://nodejs.org/)
+- **Git** → [Baixar](https://git-scm.com/)
+
+---
+
+### 📂 **2. Clonar o projeto**
+
 ```bash
-# Clonar o repositório
 git clone https://github.com/Mareaturbo2/Projeto-poo
-
-# Entrar na pasta do projeto
 cd Projeto-poo
-
-# Compilar os arquivos .java
-javac src/*.java
-
-# Executar o programa principal
-java src/JRBMain
 ```
 
+---
+
+### 🖥️ **3. Executar o Backend (Java + Spark)**
+
+1. Verifique se a pasta `lib/` contém os seguintes arquivos:  
+   ```
+   itextpdf-5.5.13.3.jar
+   gson-2.10.1.jar
+   spark-core-2.9.4.jar
+   jetty-*.jar
+   slf4j-*.jar
+   javax.servlet-api-3.1.0.jar
+   ```
+
+2. Compile o projeto:
+   ```bash
+   javac -cp "lib/*;src" -d bin src/app/ApiServer.java
+   ```
+
+3. Execute o servidor:
+   ```bash
+   java -cp "bin;lib/*" app.ApiServer
+   ```
+
+4. O console exibirá algo como:
+   ```
+   [Thread-0] INFO spark.embeddedserver.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:8080
+   ```
+
+🟢 O backend estará disponível em:
+```
+http://localhost:8080
+```
+
+---
+
+### 🌐 **4. Executar o Frontend (React + Vite)**
+
+1. Entre na pasta do frontend:
+   ```bash
+   cd src/view/JRB-FRONT
+   ```
+
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+3. Inicie o servidor:
+   ```bash
+   npm run dev
+   ```
+
+4. O terminal mostrará algo como:
+   ```
+   Local:   http://localhost:5173
+   ```
+
+5. Acesse no navegador:
+   ```
+   http://localhost:5173
+   ```
+---
+
+### 📄 **5. Testar as Funcionalidades**
+
+#### 🔐 Login e Cadastro
+- Crie uma conta pelo front-end  
+- Faça login com o CPF e senha cadastrados  
+
+#### 💰 Operações
+- **Depósito**: adiciona saldo à conta  
+- **Saque**: retira um valor (se houver saldo suficiente)  
+- **Saldo**: exibe o valor atual  
+
+#### 📊 Extrato
+- Visualize todas as movimentações (data, tipo e valor)  
+- Clique em **“Exportar em PDF”**  
+  - O PDF é baixado automaticamente no navegador  
+  - E salvo também na pasta `/data/extrato_<cpf>.pdf`
+
+---
+
+### 📁 **6. Estrutura do Projeto**
+
+```
+JRB/
+├── data/                 → Contas e extratos gerados (JSON e PDF)
+├── lib/                  → Bibliotecas Java (Spark, Gson, iTextPDF, etc.)
+├── src/
+│   ├── app/              → ApiServer.java (rotas e endpoints)
+│   ├── model/            → Entidades do sistema (Account, Movimentacao, etc.)
+│   ├── service/          → Regras de negócio (BankService, ExtratoService)
+│   └── view/JRB-FRONT/   → Aplicação React + Vite
+├── bin/                  → Classes compiladas do Java
+└── README.md             → Documentação do projeto
+```
+
+---
+
+### 🧪 **7. Testar pelo Postman (opcional)**
+
+| Método | Rota | Descrição |
+|--------|------|------------|
+| `POST` | `/api/login` | Login com CPF e senha |
+| `POST` | `/api/contas` | Criação de nova conta |
+| `PUT`  | `/api/contas/:cpf/deposito?valor=100` | Realizar depósito |
+| `PUT`  | `/api/contas/:cpf/saque?valor=50` | Realizar saque |
+| `GET`  | `/api/contas/:cpf/extrato` | Retorna extrato em JSON |
+| `GET`  | `/api/contas/:cpf/extrato/pdf` | Gera e baixa o extrato em PDF |
+
+---
+
+### ✅ **8. Encerrando o servidor**
+
+Para parar a execução:
+- No backend → pressione **Ctrl + C**
+- No frontend → pressione **Ctrl + C**
+
+---
+
+### 🧱 **9. Estrutura de Execução Completa**
+
+```
+# Backend
+javac -cp "lib/*;src" -d bin src/app/ApiServer.java
+java -cp "bin;lib/*" app.ApiServer
+
+# Frontend
+cd src/view/JRB-FRONT
+npm install
+npm run dev
+```
+
+---
+
+---
 
 ## 📌 Trello
 [![Trello](https://img.shields.io/badge/Trello-Quadro%20do%20Projeto-0052CC?style=for-the-badge&logo=trello&logoColor=white)](https://trello.com/b/mt2Z0dtN/jrb-projeto-poo)
 
-
-## 🎨 Protótipo de Lo-Fi
-[![Protótipo no Figma](https://img.shields.io/badge/Figma-Protótipo%20Lo--Fi-blue?style=for-the-badge&logo=figma)](https://www.figma.com/design/uqrwYchPt0zOBuOFScELYx?node-id=0-1)
-
----
+## 🎨 Protótipo no Figma
+[![Figma](https://img.shields.io/badge/Figma-Protótipo%20Lo--Fi-blue?style=for-the-badge&logo=figma)](https://www.figma.com/design/uqrwYchPt0zOBuOFScELYx?node-id=0-1)
 
 ## 🎥 Screencast
-[![Screencast no YouTube Entrega 1](https://img.shields.io/badge/YouTube-Screencast-red?style=for-the-badge&logo=youtube)](https://youtu.be/jlmBgCxwt4k)
-[![Screencast no YouTube:Entrega 2](https://img.shields.io/badge/YouTube-Screencast-red?style=for-the-badge&logo=youtube)](https://youtu.be/koP8LIMcJ9o)
+[![Entrega 1](https://img.shields.io/badge/YouTube-Entrega%201-red?style=for-the-badge&logo=youtube)](https://youtu.be/jlmBgCxwt4k)
+[![Entrega 2](https://img.shields.io/badge/YouTube-Entrega%202-red?style=for-the-badge&logo=youtube)](https://youtu.be/koP8LIMcJ9o)
